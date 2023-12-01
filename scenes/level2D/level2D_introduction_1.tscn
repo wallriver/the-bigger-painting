@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqa853ou6106g"]
+
+[ext_resource type="PackedScene" uid="uid://dvgipim2nnlrk" path="res://scenes/level2D/level2D.tscn" id="1_uqlum"]
+[ext_resource type="Script" path="res://scenes/level2D/level2D_with_switch.gd" id="2_tdb63"]
+[ext_resource type="PackedScene" uid="uid://rdvnqiubq4ni" path="res://scenes/objects2D/picture_switch_zone.tscn" id="3_p6qp8"]
+[ext_resource type="Texture2D" uid="uid://y06rmgsrce5b" path="res://sprites/pictures/level1/Lv1_P1_BG.png" id="5_vheep"]
+[ext_resource type="Texture2D" uid="uid://c5sqc2kf4djwj" path="res://sprites/pictures/level1/Lv1_P1_F.png" id="6_7ula1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jhau4"]
+size = Vector2(0.308559, 9.51399)
+
+[node name="Level Intro 1" instance=ExtResource("1_uqlum")]
+script = ExtResource("2_tdb63")
+
+[node name="Camera2D" type="Camera2D" parent="." index="0"]
+anchor_mode = 0
+
+[node name="Background" type="Sprite2D" parent="." index="1"]
+position = Vector2(765.838, 540.42)
+scale = Vector2(0.435952, 0.435952)
+texture = ExtResource("5_vheep")
+
+[node name="Wall" type="StaticBody2D" parent="." index="2"]
+position = Vector2(573, 557)
+collision_layer = 8
+collision_mask = 15
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" index="0"]
+position = Vector2(-395.457, 67.039)
+scale = Vector2(1143.75, 50.25)
+shape = SubResource("RectangleShape2D_jhau4")
+
+[node name="Floor" parent="." index="3"]
+collision_layer = 8
+collision_mask = 15
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" parent="Floor" index="0"]
+position = Vector2(189.25, 352.25)
+
+[node name="PlayerSpawnPosition" parent="." index="4"]
+position = Vector2(545, 561)
+
+[node name="PictureSwitchZone" parent="." index="5" instance=ExtResource("3_p6qp8")]
+position = Vector2(1548, 388)
+scale = Vector2(3, 3)
+
+[node name="PlayerEnterPosition" parent="." index="6"]
+position = Vector2(1349, 602)
+
+[node name="Foreground" type="Sprite2D" parent="." index="8"]
+position = Vector2(759, 544)
+scale = Vector2(0.432339, 0.432339)
+texture = ExtResource("6_7ula1")
+
+[connection signal="player_entered_switch_zone" from="PictureSwitchZone" to="." method="_on_picture_switch_zone_player_entered"]

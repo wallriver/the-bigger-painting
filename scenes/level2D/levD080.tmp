@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://drxhamu52sgio"]
+
+[ext_resource type="PackedScene" uid="uid://dvgipim2nnlrk" path="res://scenes/level2D/level2D.tscn" id="1_13r52"]
+[ext_resource type="PackedScene" uid="uid://cpby5064rmlmc" path="res://scenes/player2D/player2D.tscn" id="2_31a7p"]
+[ext_resource type="Script" path="res://scenes/level2D/level2D_get_a_key.gd" id="2_tk2hr"]
+
+[node name="GetAKey2D" instance=ExtResource("1_13r52")]
+script = ExtResource("2_tk2hr")
+
+[node name="Player" parent="." index="2" instance=ExtResource("2_31a7p")]

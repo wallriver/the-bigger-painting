@@ -1,0 +1,83 @@
+[gd_scene load_steps=12 format=3 uid="uid://n5a1mxihn4ca"]
+
+[ext_resource type="PackedScene" uid="uid://dvgipim2nnlrk" path="res://scenes/level2D/level2D.tscn" id="1_ahlpc"]
+[ext_resource type="Script" path="res://scenes/level2D/level2D_with_switch.gd" id="2_eu0hj"]
+[ext_resource type="PackedScene" uid="uid://rdvnqiubq4ni" path="res://scenes/objects2D/picture_switch_zone.tscn" id="3_gej5o"]
+[ext_resource type="Texture2D" uid="uid://tca0k47ydy3c" path="res://sprites/pictures/level4/Lv4_P1_BG.PNG" id="4_k3xv0"]
+[ext_resource type="Texture2D" uid="uid://csde42f5qg0dn" path="res://sprites/pictures/level4/Lv4_P1_F.PNG" id="5_hst6l"]
+[ext_resource type="PackedScene" uid="uid://ch0xhsgsik2at" path="res://items/pick_up/item_2d.tscn" id="6_da77e"]
+[ext_resource type="Resource" uid="uid://l4ipsvw761p4" path="res://items/key_knight.tres" id="7_k632g"]
+[ext_resource type="Script" path="res://inventory/slot_data.gd" id="8_mcqtb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q7hrn"]
+size = Vector2(0.207938, 4.91619)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2hfl"]
+size = Vector2(0.108341, 10.2392)
+
+[sub_resource type="Resource" id="Resource_i3cee"]
+script = ExtResource("8_mcqtb")
+item_data = ExtResource("7_k632g")
+quantity = 1
+
+[node name="Level Knight Big" instance=ExtResource("1_ahlpc")]
+script = ExtResource("2_eu0hj")
+player_scale = 3.5
+
+[node name="Camera2D" type="Camera2D" parent="." index="0"]
+anchor_mode = 0
+
+[node name="Floor" parent="." index="1"]
+position = Vector2(756, 977)
+
+[node name="CollisionShape2D" parent="Floor" index="0"]
+position = Vector2(203.125, 0)
+
+[node name="PlayerSpawnPosition" parent="." index="2"]
+position = Vector2(1082, 604)
+
+[node name="PlayerEnterPosition" parent="." index="3"]
+position = Vector2(1092, 558)
+
+[node name="Lv4P1Bg" type="Sprite2D" parent="." index="4"]
+position = Vector2(763.75, 541.25)
+scale = Vector2(0.436089, 0.436089)
+texture = ExtResource("4_k3xv0")
+metadata/_edit_lock_ = true
+
+[node name="Lv4P1F" type="Sprite2D" parent="." index="6"]
+position = Vector2(757.352, 538)
+scale = Vector2(0.430645, 0.430645)
+texture = ExtResource("5_hst6l")
+metadata/_edit_lock_ = true
+
+[node name="PictureSwitchZoneBigToMiddle" parent="." index="7" instance=ExtResource("3_gej5o")]
+position = Vector2(1431, 709)
+
+[node name="Wall" type="StaticBody2D" parent="." index="8"]
+position = Vector2(2364, 790)
+collision_layer = 8
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" index="0"]
+position = Vector2(-1835, -289.519)
+scale = Vector2(1143.75, 50.25)
+shape = SubResource("RectangleShape2D_q7hrn")
+
+[node name="Wall2" type="StaticBody2D" parent="." index="9"]
+position = Vector2(2364, 790)
+collision_layer = 8
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2" index="0"]
+position = Vector2(-2302.96, -88.2596)
+scale = Vector2(1143.75, 50.25)
+shape = SubResource("RectangleShape2D_p2hfl")
+
+[node name="Item2D" parent="." index="10" instance=ExtResource("6_da77e")]
+position = Vector2(293, 692)
+rotation = 0.993092
+slot_data = SubResource("Resource_i3cee")
+rotates = false
+
+[connection signal="player_entered_switch_zone" from="PictureSwitchZoneBigToMiddle" to="." method="_on_picture_switch_zone_player_entered"]

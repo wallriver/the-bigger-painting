@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://cierkcjia6qt3"]
+
+[ext_resource type="PackedScene" uid="uid://dvgipim2nnlrk" path="res://scenes/level2D/level2D.tscn" id="1_cqfgs"]
+[ext_resource type="Script" path="res://scenes/level2D/level2D_with_switch.gd" id="2_fb355"]
+[ext_resource type="PackedScene" uid="uid://rdvnqiubq4ni" path="res://scenes/objects2D/picture_switch_zone.tscn" id="3_ptkm7"]
+[ext_resource type="Texture2D" uid="uid://dkbmw2oa1h1yw" path="res://sprites/pictures/level4/Lv4_P2_BG.PNG" id="4_cia2n"]
+[ext_resource type="Texture2D" uid="uid://bphqn55d58mqy" path="res://sprites/pictures/level4/Lv4_P2_F.PNG" id="5_yljdt"]
+
+[node name="Level Knight Small" instance=ExtResource("1_cqfgs")]
+script = ExtResource("2_fb355")
+player_scale = 3.5
+
+[node name="Camera2D" type="Camera2D" parent="." index="0"]
+anchor_mode = 0
+
+[node name="Floor" parent="." index="1"]
+position = Vector2(768, 1116)
+
+[node name="CollisionShape2D" parent="Floor" index="0"]
+position = Vector2(203.125, 0)
+
+[node name="PlayerSpawnPosition" parent="." index="2"]
+position = Vector2(408, 770)
+
+[node name="PlayerEnterPosition" parent="." index="3"]
+position = Vector2(410, 773)
+
+[node name="Lv4P2Bg" type="Sprite2D" parent="." index="4"]
+position = Vector2(382, 539.345)
+scale = Vector2(0.308065, 0.308064)
+texture = ExtResource("4_cia2n")
+metadata/_edit_lock_ = true
+
+[node name="Lv4P2F" type="Sprite2D" parent="." index="6"]
+position = Vector2(380.555, 538.362)
+scale = Vector2(0.306811, 0.306811)
+texture = ExtResource("5_yljdt")
+metadata/_edit_lock_ = true
+
+[node name="PictureSwitchZoneSmallToBig" parent="." index="7" instance=ExtResource("3_ptkm7")]
+position = Vector2(14, 985)
+rotation = 3.14159
+is_next = false
+
+[node name="PictureSwitchZoneSmallToMiddle" parent="." index="8" instance=ExtResource("3_ptkm7")]
+position = Vector2(762, 852)
+
+[connection signal="player_entered_switch_zone" from="PictureSwitchZoneSmallToBig" to="." method="_on_picture_switch_zone_player_entered"]
+[connection signal="player_entered_switch_zone" from="PictureSwitchZoneSmallToMiddle" to="." method="_on_picture_switch_zone_player_entered"]

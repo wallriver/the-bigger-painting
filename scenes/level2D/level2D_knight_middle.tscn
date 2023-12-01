@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://ebs8vav6rg7t"]
+
+[ext_resource type="PackedScene" uid="uid://dvgipim2nnlrk" path="res://scenes/level2D/level2D.tscn" id="1_qqls6"]
+[ext_resource type="Script" path="res://scenes/level2D/level2D_with_switch.gd" id="2_5jeec"]
+[ext_resource type="PackedScene" uid="uid://rdvnqiubq4ni" path="res://scenes/objects2D/picture_switch_zone.tscn" id="3_3m6ss"]
+[ext_resource type="Texture2D" uid="uid://blh0ruqxmgqip" path="res://sprites/pictures/level4/Lv4_P3_BG.PNG" id="4_nmpbd"]
+[ext_resource type="Texture2D" uid="uid://dxn02wyhiaiit" path="res://sprites/pictures/level4/Lv4_P3_F.PNG" id="5_32b67"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jc48c"]
+size = Vector2(0.0838592, 4.91619)
+
+[node name="Level Knight Middle" instance=ExtResource("1_qqls6")]
+script = ExtResource("2_5jeec")
+player_scale = 3.5
+
+[node name="Camera2D" type="Camera2D" parent="." index="0"]
+anchor_mode = 0
+
+[node name="Floor" parent="." index="1"]
+position = Vector2(756, 977)
+
+[node name="CollisionShape2D" parent="Floor" index="0"]
+position = Vector2(203.125, 0)
+
+[node name="PlayerSpawnPosition" parent="." index="2"]
+position = Vector2(729, 530)
+
+[node name="PlayerEnterPosition" parent="." index="3"]
+position = Vector2(641, 544)
+
+[node name="Background" type="Sprite2D" parent="." index="4"]
+position = Vector2(677.016, 542)
+scale = Vector2(0.43871, 0.43871)
+texture = ExtResource("4_nmpbd")
+metadata/_edit_lock_ = true
+
+[node name="Foreground" type="Sprite2D" parent="." index="6"]
+position = Vector2(673.016, 541)
+scale = Vector2(0.43871, 0.43871)
+texture = ExtResource("5_32b67")
+metadata/_edit_lock_ = true
+
+[node name="Wall" type="StaticBody2D" parent="." index="7"]
+rotation = 3.14159
+scale = Vector2(2, 2)
+collision_layer = 8
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" index="0"]
+position = Vector2(-660.5, -317.538)
+scale = Vector2(1143.75, 50.25)
+shape = SubResource("RectangleShape2D_jc48c")
+
+[node name="PictureSwitchZoneMiddleToSmall" parent="." index="8" instance=ExtResource("3_3m6ss")]
+position = Vector2(-6, 865)
+rotation = 3.14159
+scale = Vector2(2, 2)
+is_next = false
+
+[connection signal="player_entered_switch_zone" from="PictureSwitchZoneMiddleToSmall" to="." method="_on_picture_switch_zone_player_entered"]

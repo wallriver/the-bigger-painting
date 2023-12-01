@@ -1,0 +1,148 @@
+[gd_scene load_steps=2 format=3 uid="uid://x62350om1ign"]
+
+[ext_resource type="Script" path="res://scenes/ui/settings_ui.gd" id="1_q8wgs"]
+
+[node name="SettingsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q8wgs")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -399.5
+offset_top = -248.0
+offset_right = 399.5
+offset_bottom = 248.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="MusicHeader" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Music"
+
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="OnOffLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Active:"
+
+[node name="MusicOnCheckbox" type="CheckBox" parent="Panel/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VolumeLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Volume"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="Panel/MarginContainer/VBoxContainer/GridContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="MusicVolumeSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/GridContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+step = 10.0
+value = 80.0
+
+[node name="Spacer2" type="Control" parent="Panel/MarginContainer/VBoxContainer/GridContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VolumeLabel2" type="Label" parent="Panel/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "   "
+
+[node name="NochWasLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "                                                      "
+
+[node name="SoundEffectsHeader" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Sound Effects"
+
+[node name="GridContainer2" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="OnOffLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Active:"
+
+[node name="SFXOnCheckbox" type="CheckBox" parent="Panel/MarginContainer/VBoxContainer/GridContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SFXVolumeLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Volume"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/GridContainer2"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="Panel/MarginContainer/VBoxContainer/GridContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="SFXVolumeSlider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/GridContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+step = 10.0
+value = 80.0
+
+[node name="Spacer2" type="Control" parent="Panel/MarginContainer/VBoxContainer/GridContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="VolumeLabel2" type="Label" parent="Panel/MarginContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "   "
+
+[node name="NochWasLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/GridContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "                                                      "
+
+[connection signal="toggled" from="Panel/MarginContainer/VBoxContainer/GridContainer/MusicOnCheckbox" to="." method="_on_music_on_checkbox_toggled"]
+[connection signal="value_changed" from="Panel/MarginContainer/VBoxContainer/GridContainer/VBoxContainer/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="toggled" from="Panel/MarginContainer/VBoxContainer/GridContainer2/SFXOnCheckbox" to="." method="_on_sfx_on_checkbox_toggled"]
+[connection signal="value_changed" from="Panel/MarginContainer/VBoxContainer/GridContainer2/VBoxContainer/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]

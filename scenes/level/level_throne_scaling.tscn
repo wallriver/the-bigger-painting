@@ -1,0 +1,157 @@
+[gd_scene load_steps=14 format=3 uid="uid://dw3s2kgamixum"]
+
+[ext_resource type="PackedScene" uid="uid://32t83y7svysh" path="res://scenes/level/level.tscn" id="1_jlg4h"]
+[ext_resource type="PackedScene" uid="uid://s2cwpxear1ps" path="res://scenes/level/level_knight.tscn" id="2_vrbvr"]
+[ext_resource type="PackedScene" uid="uid://bb7il3v4p34c2" path="res://scenes/objects/exit.tscn" id="3_by4vh"]
+[ext_resource type="PackedScene" uid="uid://pxtp3aejgrl6" path="res://scenes/objects/picture_frame.tscn" id="4_hv3lm"]
+[ext_resource type="PackedScene" uid="uid://ybkmlxii77if" path="res://scenes/level2D/level2D_throne_room.tscn" id="5_kk2rc"]
+[ext_resource type="PackedScene" uid="uid://dhypmaarlha2v" path="res://scenes/level2D/level2d_throne.tscn" id="6_kh5qd"]
+[ext_resource type="PackedScene" uid="uid://brx5mh3bb464a" path="res://scenes/house_tiles/walls/wall_bottom_wood_8.tscn" id="7_27anu"]
+[ext_resource type="PackedScene" uid="uid://divbwi0nlpaj0" path="res://scenes/house_tiles/walls/wall_bottom_wood_3.tscn" id="8_u3gyt"]
+[ext_resource type="PackedScene" uid="uid://dhxisla26nho" path="res://scenes/house_tiles/floors/floor_marble_8.tscn" id="9_2x50f"]
+[ext_resource type="PackedScene" uid="uid://b5utr0vl1dfpq" path="res://scenes/house_tiles/floors/floor_marble_1_8.tscn" id="10_po22b"]
+[ext_resource type="PackedScene" uid="uid://banu0dj460uk8" path="res://scenes/house_tiles/floors/floor_marble_1.tscn" id="11_hdpcc"]
+[ext_resource type="PackedScene" uid="uid://bwq3ki0poe43b" path="res://scenes/objects/entry.tscn" id="12_ymeer"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_26le7"]
+
+[node name="ThroneScaling" instance=ExtResource("1_jlg4h")]
+next_level = ExtResource("2_vrbvr")
+
+[node name="Player" parent="." index="2"]
+transform = Transform3D(-0.254619, 0, 0.967041, 0, 1, 0, -0.967041, 0, -0.254619, 3.39038, 3.16491, 0)
+
+[node name="DirectionalLight3D" parent="Lights" index="0"]
+transform = Transform3D(0.869495, -0.243229, 0.429905, 0, 0.870356, 0.492424, -0.493942, -0.42816, 0.75677, 0, 3.9348, 0)
+
+[node name="DirectionalLight3D3" parent="Lights" index="2"]
+transform = Transform3D(-0.00185359, -0.993056, -0.117625, 0.659295, 0.0872272, -0.746808, 0.751882, -0.0789342, 0.654555, 0, 3.77054, 0)
+
+[node name="Exit" parent="." index="5" instance=ExtResource("3_by4vh")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 2.1576, -5.86098)
+key_required = "key_temple"
+
+[node name="CollisionShape3D" parent="Exit/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0350354, 1.32523, 0.907868)
+
+[node name="PictureFrameThroneRoom" parent="." index="6" node_paths=PackedStringArray("displayedLevel", "viewport") instance=ExtResource("4_hv3lm")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.99284, 4.57682, -1.35958)
+displayedLevel = NodePath("../SubViewport/LevelThroneRoom")
+viewport = NodePath("../SubViewport")
+
+[node name="PictureFrameThrone" parent="." index="7" node_paths=PackedStringArray("displayedLevel", "viewport") instance=ExtResource("4_hv3lm")]
+transform = Transform3D(0.4, 0, 0, 0, 1, 0, 0, 0, 1, -7.85102, 4.57793, 4.63541)
+displayedLevel = NodePath("../SubViewport2/LevelThrone")
+viewport = NodePath("../SubViewport2")
+
+[node name="Painting" parent="PictureFrameThrone" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0135589, 0)
+material_override = SubResource("StandardMaterial3D_26le7")
+
+[node name="SubViewport" type="SubViewport" parent="." index="8"]
+size = Vector2i(1420, 1080)
+render_target_update_mode = 4
+
+[node name="LevelThroneRoom" parent="SubViewport" index="0" node_paths=PackedStringArray("next_picture") instance=ExtResource("5_kk2rc")]
+next_picture = NodePath("../../PictureFrameThrone")
+player_scale = 2.0
+
+[node name="SubViewport2" type="SubViewport" parent="." index="9"]
+size = Vector2i(700, 1080)
+render_target_update_mode = 4
+
+[node name="LevelThrone" parent="SubViewport2" index="0" node_paths=PackedStringArray("next_picture") instance=ExtResource("6_kh5qd")]
+next_picture = NodePath("../../PictureFrameThroneRoom")
+player_scale = 8.0
+
+[node name="Walls" type="Node3D" parent="." index="10"]
+
+[node name="Wall_BottomPanel_8" parent="Walls" index="0" instance=ExtResource("7_27anu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, 4)
+
+[node name="Wall_BottomPanel_11" parent="Walls" index="1" instance=ExtResource("7_27anu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2, 2, 12)
+
+[node name="Wall_BottomPanel_15" parent="Walls" index="2" instance=ExtResource("7_27anu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.47137, 2, 4.48769)
+
+[node name="Wall_BottomPanel_12" parent="Walls" index="3" instance=ExtResource("7_27anu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 2, -3.5)
+
+[node name="Wall_BottomPanel_9" parent="Walls" index="4" instance=ExtResource("7_27anu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 2, 12)
+
+[node name="Wall_BottomPanel_10" parent="Walls" index="5" instance=ExtResource("7_27anu")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 2, 4)
+
+[node name="Wall_BottomPanel_3" parent="Walls" index="6" instance=ExtResource("8_u3gyt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 2, -6.5)
+
+[node name="Wall_BottomPanel_13" parent="Walls" index="7" instance=ExtResource("7_27anu")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.53383, 2, -6.46653)
+
+[node name="Wall_BottomPanel_4" parent="Walls" index="8" instance=ExtResource("8_u3gyt")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.53383, 2, -6.46653)
+
+[node name="Wall_BottomPanel_14" parent="Walls" index="9" instance=ExtResource("7_27anu")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.51511, 2, 1.54922)
+
+[node name="Wall_BottomPanel_5" parent="Walls" index="10" instance=ExtResource("8_u3gyt")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.51511, 2, 4.54922)
+
+[node name="Floor" type="Node3D" parent="." index="11"]
+
+[node name="FloorMarble_8" parent="Floor" index="0" instance=ExtResource("9_2x50f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.00775, 2, 3.02472)
+
+[node name="FloorMarble_9" parent="Floor" index="1" instance=ExtResource("9_2x50f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.00775, 2, -4.97924)
+
+[node name="FloorMarble_10" parent="Floor" index="2" instance=ExtResource("9_2x50f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00775, 2, -4.97924)
+
+[node name="FloorMarble_2_8" parent="Floor" index="3" instance=ExtResource("10_po22b")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 2, 4.02136)
+
+[node name="FloorMarble_2_9" parent="Floor" index="4" instance=ExtResource("10_po22b")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 2, -4.97864)
+
+[node name="FloorMarble_1" parent="Floor" index="5" instance=ExtResource("11_hdpcc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, -6)
+
+[node name="FloorMarble_2" parent="Floor" index="6" instance=ExtResource("11_hdpcc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, -6)
+
+[node name="Ceiling" type="Node3D" parent="." index="12"]
+
+[node name="FloorMarble_11" parent="Ceiling" index="0" instance=ExtResource("9_2x50f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0078, 6, 3.02472)
+
+[node name="FloorMarble_12" parent="Ceiling" index="1" instance=ExtResource("9_2x50f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.00775, 6, -4.97924)
+
+[node name="FloorMarble_13" parent="Ceiling" index="2" instance=ExtResource("9_2x50f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00775, 6, -4.97924)
+
+[node name="FloorMarble_2_10" parent="Ceiling" index="3" instance=ExtResource("10_po22b")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 6, 4.02136)
+
+[node name="FloorMarble_2_12" parent="Ceiling" index="4" instance=ExtResource("10_po22b")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 6, 12.0214)
+
+[node name="FloorMarble_2_11" parent="Ceiling" index="5" instance=ExtResource("10_po22b")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 6, -4.97864)
+
+[node name="FloorMarble_3" parent="Ceiling" index="6" instance=ExtResource("11_hdpcc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 6, -6)
+
+[node name="FloorMarble_4" parent="Ceiling" index="7" instance=ExtResource("11_hdpcc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 6, -6)
+
+[node name="Entry" parent="." index="14" instance=ExtResource("12_ymeer")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.7656, 2.2292, 0)
+
+[editable path="Exit"]
+[editable path="Exit/ExitMesh"]
+[editable path="Exit/Padlock"]
+[editable path="PictureFrameThrone"]

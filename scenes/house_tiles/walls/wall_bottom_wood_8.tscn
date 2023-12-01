@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://brx5mh3bb464a"]
+
+[ext_resource type="PackedScene" uid="uid://b5t6ytnc8dw8k" path="res://models/tiles/stone_wall_back.blend" id="1_l02nr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qdt3l"]
+size = Vector3(1, 4, 8)
+
+[node name="Wall_BottomPanel_8" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 27
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4)
+shape = SubResource("BoxShape3D_qdt3l")
+
+[node name="stone_wall_back" parent="." instance=ExtResource("1_l02nr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+
+[node name="stone_wall_back2" parent="." instance=ExtResource("1_l02nr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 1.5)
+
+[node name="stone_wall_back3" parent="." instance=ExtResource("1_l02nr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 2.5)
+
+[node name="stone_wall_back4" parent="." instance=ExtResource("1_l02nr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 3.5)
+
+[node name="stone_wall_back5" parent="." instance=ExtResource("1_l02nr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 4.5)
+
+[node name="stone_wall_back6" parent="." instance=ExtResource("1_l02nr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 5.5)
+
+[node name="stone_wall_back7" parent="." instance=ExtResource("1_l02nr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 6.5)
+
+[node name="stone_wall_back8" parent="." instance=ExtResource("1_l02nr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 7.5)

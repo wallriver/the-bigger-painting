@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://dw3s2kgamixum"]
+
+[ext_resource type="PackedScene" uid="uid://32t83y7svysh" path="res://scenes/level/level.tscn" id="1_jlg4h"]
+[ext_resource type="MeshLibrary" uid="uid://dmxqig1emhyf8" path="res://scenes/mesh_libraries/house_meshes.tres" id="2_5lg0n"]
+[ext_resource type="PackedScene" uid="uid://bb7il3v4p34c2" path="res://scenes/objects/exit.tscn" id="3_by4vh"]
+[ext_resource type="PackedScene" uid="uid://pxtp3aejgrl6" path="res://scenes/objects/picture_frame.tscn" id="4_hv3lm"]
+[ext_resource type="PackedScene" uid="uid://ybkmlxii77if" path="res://scenes/level2D/level2D_throne_room.tscn" id="5_kk2rc"]
+[ext_resource type="PackedScene" uid="uid://dhypmaarlha2v" path="res://scenes/level2D/level2d_throne.tscn" id="6_kh5qd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7n4a6"]
+albedo_color = Color(0.713726, 0.435294, 0.0901961, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_26le7"]
+
+[node name="ThroneScaling" instance=ExtResource("1_jlg4h")]
+
+[node name="Player" parent="." index="2"]
+transform = Transform3D(-0.254619, 0, 0.967041, 0, 1, 0, -0.967041, 0, -0.254619, 1.78875, 5.38928, 0)
+
+[node name="GridMap" type="GridMap" parent="." index="5"]
+mesh_library = ExtResource("2_5lg0n")
+cell_size = Vector3(1, 4, 1)
+collision_layer = 4
+data = {
+"cells": PackedInt32Array(65533, 1, 0, 65533, 0, 0, 65533, 65535, 0, 65533, 65533, 0, 65533, 65531, 0, 65533, 65530, 0, 65533, 65529, 0, 65533, 65528, 0, 65533, 65527, 0, 65533, 65526, 0, 65533, 65532, 0, 65533, 65534, 0, 65534, 1, 0, 65534, 0, 0, 65534, 65535, 0, 65534, 65534, 0, 65534, 65533, 0, 65534, 65532, 0, 65534, 65531, 0, 65534, 65530, 0, 65534, 65529, 0, 65534, 65528, 0, 65534, 65527, 0, 65534, 65526, 0, 65535, 1, 0, 65535, 0, 0, 65535, 65535, 0, 0, 65534, 0, 0, 65533, 0, 0, 65532, 0, 0, 65531, 0, 0, 65530, 0, 0, 65529, 0, 0, 65528, 0, 65535, 65527, 0, 65535, 65526, 0, 65535, 65525, 4, 65535, 65528, 0, 65535, 65529, 0, 65535, 65530, 0, 65535, 65531, 0, 65535, 65532, 0, 65535, 65533, 0, 65535, 65534, 0, 0, 65535, 0, 1, 65535, 0, 1, 0, 0, 0, 1, 0, 0, 2, 0, 1, 1, 0, 2, 1, 0, 2, 2, 0, 3, 2, 0, 3, 1, 0, 0, 0, 0, 2, 0, 0, 3, 0, 0, 2, 65535, 0, 2, 65534, 0, 2, 65533, 0, 2, 65532, 0, 2, 65531, 0, 2, 65530, 0, 2, 65529, 0, 2, 65528, 0, 2, 65527, 0, 2, 65526, 0, 2, 65525, 4, 0, 65526, 0, 1, 65526, 0, 1, 65527, 0, 0, 65527, 0, 1, 65528, 0, 1, 65529, 0, 1, 65531, 0, 1, 65532, 0, 1, 65533, 0, 1, 65534, 0, 1, 65530, 0, 1, 2, 0, 65535, 2, 0, 65534, 2, 0, 65533, 2, 0, 4, 2, 0, 4, 1, 0, 4, 0, 0, 4, 65535, 0, 5, 65533, 2, 5, 65532, 2, 5, 65531, 2, 5, 65530, 2, 5, 65529, 2, 4, 65529, 0, 4, 65528, 0, 4, 65527, 0, 4, 65526, 0, 3, 65526, 0, 3, 65527, 0, 3, 65528, 0, 3, 65529, 0, 3, 65530, 0, 3, 65531, 0, 3, 65532, 0, 3, 65533, 0, 3, 65534, 0, 3, 65535, 0, 4, 65534, 0, 5, 65534, 2, 4, 65530, 0, 4, 65531, 0, 4, 65532, 0, 4, 65533, 0, 65532, 3, 6, 65532, 2, 1, 65532, 1, 1, 65532, 0, 1, 65532, 65535, 1, 65532, 65534, 1, 65532, 65533, 1, 65532, 65532, 1, 65532, 65530, 1, 65532, 65531, 1, 65532, 65529, 1, 65532, 65528, 1, 65532, 65527, 1, 65532, 65526, 1, 65532, 65525, 5, 5, 3, 7, 5, 65525, 8, 4, 65525, 4, 3, 65525, 4, 1, 65525, 4, 0, 65525, 4, 65534, 65525, 4, 65533, 65525, 4, 4, 3, 3, 3, 3, 3, 2, 3, 3, 1, 3, 3, 0, 3, 3, 65534, 3, 3, 65535, 3, 3, 65533, 3, 3, 5, 65526, 2, 5, 65527, 2, 5, 65528, 2, 5, 65535, 2, 5, 0, 2, 5, 1, 2, 5, 2, 2)
+}
+
+[node name="Exit" parent="." index="6" instance=ExtResource("3_by4vh")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 2.1576, -10.4077)
+key_required = "key_golden"
+
+[node name="Padlock" parent="Exit/Padlock" index="0"]
+material_override = SubResource("StandardMaterial3D_7n4a6")
+
+[node name="PictureFrameThroneRoom" parent="." index="7" node_paths=PackedStringArray("displayedLevel", "viewport") instance=ExtResource("4_hv3lm")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.48834, 4.2899, -0.696677)
+displayedLevel = NodePath("../SubViewport/LevelThroneRoom")
+viewport = NodePath("../SubViewport")
+
+[node name="PictureFrameThrone" parent="." index="8" node_paths=PackedStringArray("displayedLevel", "viewport") instance=ExtResource("4_hv3lm")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.47836, 4.2048, -6.43716)
+displayedLevel = NodePath("../SubViewport2/LevelThrone")
+viewport = NodePath("../SubViewport2")
+
+[node name="Painting" parent="PictureFrameThrone" index="0"]
+material_override = SubResource("StandardMaterial3D_26le7")
+
+[node name="SubViewport" type="SubViewport" parent="." index="9"]
+size = Vector2i(1150, 650)
+
+[node name="LevelThroneRoom" parent="SubViewport" index="0" node_paths=PackedStringArray("next_picture") instance=ExtResource("5_kk2rc")]
+next_picture = NodePath("../../PictureFrameThrone")
+
+[node name="SubViewport2" type="SubViewport" parent="." index="10"]
+size = Vector2i(1150, 650)
+
+[node name="LevelThrone" parent="SubViewport2" index="0" node_paths=PackedStringArray("next_picture") instance=ExtResource("6_kh5qd")]
+next_picture = NodePath("../../PictureFrameThroneRoom")
+
+[editable path="Exit"]
+[editable path="Exit/ExitMesh"]
+[editable path="Exit/Padlock"]
+[editable path="PictureFrameThrone"]

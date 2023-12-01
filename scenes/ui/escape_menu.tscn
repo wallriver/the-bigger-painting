@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://bpy3u1daqh1yj"]
+
+[ext_resource type="Script" path="res://scenes/ui/escape_menu.gd" id="1_3sddl"]
+[ext_resource type="Texture2D" uid="uid://cmqlmd3i58va7" path="res://sprites/ui/buttons/BackToMenu.PNG" id="2_01wbr"]
+[ext_resource type="Texture2D" uid="uid://hsli8wprps1q" path="res://sprites/ui/buttons/Options.PNG" id="2_23o7r"]
+[ext_resource type="Texture2D" uid="uid://dbakaot6f1bqw" path="res://sprites/ui/buttons/OptionsHover.PNG" id="3_fnwst"]
+[ext_resource type="Texture2D" uid="uid://djrd45l66rshi" path="res://sprites/ui/buttons/CloseHover.PNG" id="5_e16xg"]
+[ext_resource type="Texture2D" uid="uid://d1gx78ofe1ejn" path="res://sprites/ui/buttons/BackToMenuHover.PNG" id="5_rg8ne"]
+[ext_resource type="Texture2D" uid="uid://chgf1yruch7ni" path="res://sprites/ui/buttons/Close.PNG" id="6_cajkk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_khbrh"]
+bg_color = Color(0.803922, 0.803922, 0.803922, 0.262745)
+
+[node name="EscapeMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3sddl")
+
+[node name="BackgroundPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_khbrh")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -208.5
+offset_right = 210.0
+offset_bottom = 208.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="SettingsButton" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_fnwst")
+texture_hover = ExtResource("2_23o7r")
+
+[node name="QuitToMenuButton" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_rg8ne")
+texture_hover = ExtResource("2_01wbr")
+
+[node name="CloseMenuButton" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_cajkk")
+texture_hover = ExtResource("5_e16xg")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/QuitToMenuButton" to="." method="_on_quit_to_menu_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CloseMenuButton" to="." method="_on_close_menu_button_pressed"]

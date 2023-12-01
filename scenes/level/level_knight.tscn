@@ -1,0 +1,400 @@
+[gd_scene load_steps=18 format=3 uid="uid://s2cwpxear1ps"]
+
+[ext_resource type="PackedScene" uid="uid://32t83y7svysh" path="res://scenes/level/level.tscn" id="1_2h2nu"]
+[ext_resource type="Script" path="res://scenes/level/level_introduction.gd" id="2_4jlvj"]
+[ext_resource type="PackedScene" uid="uid://8ew34udo5chg" path="res://scenes/level2D/menu_scenes/level2D_thanks_for_playing.tscn" id="3_7v262"]
+[ext_resource type="PackedScene" uid="uid://n5a1mxihn4ca" path="res://scenes/level2D/level2D_knight_big.tscn" id="5_wf4p1"]
+[ext_resource type="PackedScene" uid="uid://ebs8vav6rg7t" path="res://scenes/level2D/level2D_knight_middle.tscn" id="6_c8t8c"]
+[ext_resource type="PackedScene" uid="uid://cierkcjia6qt3" path="res://scenes/level2D/level2D_knight_small.tscn" id="7_oeius"]
+[ext_resource type="PackedScene" uid="uid://pxtp3aejgrl6" path="res://scenes/objects/picture_frame.tscn" id="7_sdlv3"]
+[ext_resource type="PackedScene" uid="uid://bb7il3v4p34c2" path="res://scenes/objects/exit.tscn" id="8_8g3gn"]
+[ext_resource type="PackedScene" uid="uid://brx5mh3bb464a" path="res://scenes/house_tiles/walls/wall_bottom_wood_8.tscn" id="10_bq0c3"]
+[ext_resource type="PackedScene" uid="uid://dhxisla26nho" path="res://scenes/house_tiles/floors/floor_marble_8.tscn" id="11_288r4"]
+[ext_resource type="PackedScene" uid="uid://divbwi0nlpaj0" path="res://scenes/house_tiles/walls/wall_bottom_wood_3.tscn" id="11_o1xg0"]
+[ext_resource type="PackedScene" uid="uid://b5utr0vl1dfpq" path="res://scenes/house_tiles/floors/floor_marble_1_8.tscn" id="12_iqcyh"]
+[ext_resource type="PackedScene" uid="uid://da3jmcc316sdc" path="res://scenes/house_tiles/floors/floor_marble_2_8.tscn" id="13_d8gy8"]
+[ext_resource type="PackedScene" uid="uid://bwq3ki0poe43b" path="res://scenes/objects/entry.tscn" id="14_7gor0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xtrm4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mwqkn"]
+size = Vector3(5, 5, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e7k7a"]
+
+[node name="LevelKnight" instance=ExtResource("1_2h2nu")]
+script = ExtResource("2_4jlvj")
+next_level = ExtResource("3_7v262")
+
+[node name="Player" parent="." index="2"]
+transform = Transform3D(0.0995625, 0, 0.995031, 0, 1, 0, -0.995031, 0, 0.0995625, -7.05962, 3.13883, 0.355182)
+
+[node name="Lights" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.83509, 4.75785, -0.183123)
+
+[node name="DirectionalLight3D" parent="Lights" index="0"]
+transform = Transform3D(0.216325, 0.938783, 0.268125, -0.62187, 0.344202, -0.703422, -0.75265, -0.0145709, 0.65826, 0, 0, 0)
+
+[node name="DirectionalLight3D2" parent="Lights" index="1"]
+transform = Transform3D(-0.424538, 0.614244, -0.665186, 0.330458, 0.789116, 0.517777, 0.84295, 0, -0.537991, 0, 0, 0)
+
+[node name="LightsRoomBlue" type="Node3D" parent="Lights" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8033, 0, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lights/LightsRoomBlue" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 3.59989e-21, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 3, 1, -1.46225)
+light_color = Color(0.317647, 0.623529, 0.678431, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Lights/LightsRoomBlue" index="1"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 1.78779, 1, 3.4462)
+light_color = Color(0.317647, 0.623529, 0.678431, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Lights/LightsRoomBlue" index="2"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 3, 1, -4)
+light_color = Color(0.317647, 0.623529, 0.678431, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Lights/LightsRoomBlue" index="3"]
+transform = Transform3D(-4.37114e-08, -1, 3.59989e-21, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 9.10803, 1, -1.46225)
+light_color = Color(0.317647, 0.623529, 0.678431, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Lights/LightsRoomBlue" index="4"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 9.10803, 1, 1.4)
+light_color = Color(0.317647, 0.623529, 0.678431, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="SpotLight3D10" type="SpotLight3D" parent="Lights/LightsRoomBlue" index="5"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 7.89582, 1, 3.36584)
+light_color = Color(0.317647, 0.623529, 0.678431, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="Lights/LightsRoomBlue" index="6"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 9.10803, 1, -4)
+light_color = Color(0.317647, 0.623529, 0.678431, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="Lights/LightsRoomBlue" index="7"]
+transform = Transform3D(-4.37114e-08, -1, 3.59989e-21, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 6.05401, 1, -1.46225)
+light_color = Color(0.317647, 0.623529, 0.678431, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="SpotLight3D8" type="SpotLight3D" parent="Lights/LightsRoomBlue" index="8"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 4.8418, 1, 3.4462)
+light_color = Color(0.317647, 0.623529, 0.678431, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="SpotLight3D9" type="SpotLight3D" parent="Lights/LightsRoomBlue" index="9"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 6.05401, 1, -4)
+light_color = Color(0.317647, 0.623529, 0.678431, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="LightsRoomOrange" type="Node3D" parent="Lights" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1125, 0, -13.285)
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Lights/LightsRoomOrange" index="0"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 3.50977, 1, 0.373338)
+light_color = Color(0.913725, 0.384314, 0.113725, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lights/LightsRoomOrange" index="1"]
+transform = Transform3D(-4.37114e-08, -1, 3.59989e-21, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 3.50977, 1, -2.48891)
+light_color = Color(0.913725, 0.384314, 0.113725, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Lights/LightsRoomOrange" index="2"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 3.50977, 1, -5.02666)
+light_color = Color(0.913725, 0.384314, 0.113725, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Lights/LightsRoomOrange" index="3"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -2.32605, 1, 1.4)
+light_color = Color(0.913725, 0.384314, 0.113725, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Lights/LightsRoomOrange" index="4"]
+transform = Transform3D(-4.37114e-08, -1, 3.59989e-21, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, -2.32605, 1, -1.46225)
+light_color = Color(0.913725, 0.384314, 0.113725, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="Lights/LightsRoomOrange" index="5"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -2.32605, 1, -4)
+light_color = Color(0.913725, 0.384314, 0.113725, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="Lights/LightsRoomOrange" index="6"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0.336975, 1, 1.4)
+light_color = Color(0.913725, 0.384314, 0.113725, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="SpotLight3D8" type="SpotLight3D" parent="Lights/LightsRoomOrange" index="7"]
+transform = Transform3D(-4.37114e-08, -1, 3.59989e-21, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0.336975, 1, -1.46225)
+light_color = Color(0.913725, 0.384314, 0.113725, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="SpotLight3D9" type="SpotLight3D" parent="Lights/LightsRoomOrange" index="8"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0.336975, 1, -4)
+light_color = Color(0.913725, 0.384314, 0.113725, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="LightsRoomGreen" type="Node3D" parent="Lights" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8208, 0, -13.285)
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Lights/LightsRoomGreen" index="0"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 3, 1, 1.4)
+light_color = Color(0.435294, 0.639216, 0.266667, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lights/LightsRoomGreen" index="1"]
+transform = Transform3D(-4.37114e-08, -1, 3.59989e-21, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 3, 1, -1.46225)
+light_color = Color(0.435294, 0.639216, 0.266667, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Lights/LightsRoomGreen" index="2"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 3, 1, -5.39221)
+light_color = Color(0.435294, 0.639216, 0.266667, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Lights/LightsRoomGreen" index="3"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -2.32605, 1, 1.4)
+light_color = Color(0.435294, 0.639216, 0.266667, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Lights/LightsRoomGreen" index="4"]
+transform = Transform3D(-4.37114e-08, -1, 3.59989e-21, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, -2.32605, 1, -1.46225)
+light_color = Color(0.435294, 0.639216, 0.266667, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="Lights/LightsRoomGreen" index="5"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -2.32605, 1, -5.39221)
+light_color = Color(0.435294, 0.639216, 0.266667, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="Lights/LightsRoomGreen" index="6"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0.336975, 1, 1.4)
+light_color = Color(0.435294, 0.639216, 0.266667, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="SpotLight3D8" type="SpotLight3D" parent="Lights/LightsRoomGreen" index="7"]
+transform = Transform3D(-4.37114e-08, -1, 3.59989e-21, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0.336975, 1, -1.46225)
+light_color = Color(0.435294, 0.639216, 0.266667, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="SpotLight3D9" type="SpotLight3D" parent="Lights/LightsRoomGreen" index="8"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0.336975, 1, -5.39221)
+light_color = Color(0.435294, 0.639216, 0.266667, 1)
+light_energy = 10.0
+spot_range = 8.0
+
+[node name="SubViewportBig" type="SubViewport" parent="." index="4"]
+size = Vector2i(1420, 1080)
+render_target_update_mode = 4
+
+[node name="Level Knight Big" parent="SubViewportBig" index="0" node_paths=PackedStringArray("next_picture") instance=ExtResource("5_wf4p1")]
+next_picture = NodePath("../../PictureFrameSmall")
+player_scale = 7.0
+
+[node name="SubViewportMiddle" type="SubViewport" parent="." index="5"]
+size = Vector2i(1200, 1080)
+render_target_update_mode = 4
+
+[node name="Level Knight Middle" parent="SubViewportMiddle" index="0" node_paths=PackedStringArray("previous_picture") instance=ExtResource("6_c8t8c")]
+previous_picture = NodePath("../../PictureFrameSmall")
+player_scale = 2.0
+
+[node name="SubViewportSmall" type="SubViewport" parent="." index="6"]
+size = Vector2i(700, 1080)
+render_target_update_mode = 4
+
+[node name="Level Knight Small" parent="SubViewportSmall" index="0" node_paths=PackedStringArray("next_picture", "previous_picture") instance=ExtResource("7_oeius")]
+next_picture = NodePath("../../PictureFrameMiddle")
+previous_picture = NodePath("../../PictureFrameLarge")
+player_scale = 5.0
+
+[node name="PictureFrameLarge" parent="." index="7" node_paths=PackedStringArray("displayedLevel", "viewport") instance=ExtResource("7_sdlv3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.732, 4.545, -6.4)
+displayedLevel = NodePath("../SubViewportBig/Level Knight Big")
+viewport = NodePath("../SubViewportBig")
+
+[node name="PictureFrameSmall" parent="." index="8" node_paths=PackedStringArray("displayedLevel", "viewport") instance=ExtResource("7_sdlv3")]
+transform = Transform3D(-4.29137e-08, 0, 1, 0, 1, 0, -0.4, 0, -1.07285e-07, -4.03989, 4.66565, -13.4123)
+displayedLevel = NodePath("../SubViewportSmall/Level Knight Small")
+viewport = NodePath("../SubViewportSmall")
+
+[node name="Painting" parent="PictureFrameSmall" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0384486, 0, 0.0068922)
+material_override = SubResource("StandardMaterial3D_xtrm4")
+
+[node name="Camera3D" parent="PictureFrameSmall" index="1"]
+transform = Transform3D(5, 0, 0, 0, 2, 0, 0, 0, 2, 9.53674e-07, 0, 1)
+
+[node name="CollisionShape3D" parent="PictureFrameSmall/Area3D" index="0"]
+shape = SubResource("BoxShape3D_mwqkn")
+
+[node name="PictureFrameMiddle" parent="." index="9" node_paths=PackedStringArray("displayedLevel", "viewport") instance=ExtResource("7_sdlv3")]
+transform = Transform3D(-1.74846e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.74846e-08, -15.2013, 4.18082, -14.691)
+displayedLevel = NodePath("../SubViewportMiddle/Level Knight Middle")
+viewport = NodePath("../SubViewportMiddle")
+
+[node name="Painting" parent="PictureFrameMiddle" index="0"]
+material_override = SubResource("StandardMaterial3D_e7k7a")
+
+[node name="Camera3D" parent="PictureFrameMiddle" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53674e-07, 0, 1)
+
+[node name="Exit" parent="." index="11" instance=ExtResource("8_8g3gn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3496, 2.12085, -3)
+key_required = "key_knight"
+
+[node name="Walls" type="Node3D" parent="." index="12"]
+
+[node name="Wall_BottomPanel_8" parent="Walls" index="0" instance=ExtResource("10_bq0c3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2, -7)
+
+[node name="Wall_BottomPanel_10" parent="Walls" index="1" instance=ExtResource("10_bq0c3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5, 2, 4)
+
+[node name="Wall_BottomPanel_11" parent="Walls" index="2" instance=ExtResource("10_bq0c3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5, 2, -4)
+
+[node name="Wall_BottomPanel_12" parent="Walls" index="3" instance=ExtResource("10_bq0c3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 2, -11.5)
+
+[node name="Wall_BottomPanel_13" parent="Walls" index="4" instance=ExtResource("10_bq0c3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3, 2, -11.56)
+
+[node name="Wall_BottomPanel_14" parent="Walls" index="5" instance=ExtResource("10_bq0c3")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 3, 2, -19.5)
+
+[node name="Wall_BottomPanel_15" parent="Walls" index="6" instance=ExtResource("10_bq0c3")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -5, 2, -19.5)
+
+[node name="Wall_BottomPanel_16" parent="Walls" index="7" instance=ExtResource("10_bq0c3")]
+transform = Transform3D(0.999971, 0, -0.00759195, 0, 1, 0, 0.00759195, 0, 0.999971, -16, 2, -19.5)
+
+[node name="Wall_BottomPanel_17" parent="Walls" index="8" instance=ExtResource("10_bq0c3")]
+transform = Transform3D(0.00759191, 0, 0.999971, 0, 1, 0, -0.999971, 0, 0.00759191, -16, 2, -11.5)
+
+[node name="Wall_BottomPanel_18" parent="Walls" index="9" instance=ExtResource("10_bq0c3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8, 2, -7)
+
+[node name="Wall_BottomPanel_9" parent="Walls" index="10" instance=ExtResource("10_bq0c3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16, 2, 4)
+
+[node name="Wall_BottomPanel_3" parent="Walls" index="11" instance=ExtResource("11_o1xg0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2, 1)
+
+[node name="Wall_BottomPanel_4" parent="Walls" index="12" instance=ExtResource("11_o1xg0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 2, 4)
+
+[node name="Wall_BottomPanel_5" parent="Walls" index="13" instance=ExtResource("11_o1xg0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13, 2, -19.5)
+
+[node name="Wall_BottomPanel_6" parent="Walls" index="14" instance=ExtResource("11_o1xg0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2, -12)
+
+[node name="Wall_BottomPanel_7" parent="Walls" index="15" instance=ExtResource("11_o1xg0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.57107, 2, -14.9191)
+
+[node name="Wall_BottomPanel_19" parent="Walls" index="16" instance=ExtResource("11_o1xg0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 2, -9.5)
+
+[node name="Floors" type="Node3D" parent="." index="13"]
+
+[node name="FloorMarble_2_8" parent="Floors" index="0" instance=ExtResource("12_iqcyh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15, 2, -5)
+
+[node name="FloorMarble_2_9" parent="Floors" index="1" instance=ExtResource("12_iqcyh")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6, 2, 3)
+
+[node name="FloorMarble_2_10" parent="Floors" index="2" instance=ExtResource("12_iqcyh")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6, 2, -5)
+
+[node name="FloorMarble_2_12" parent="Floors" index="3" instance=ExtResource("12_iqcyh")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.99289, 2, -5)
+
+[node name="FloorMarble_2_11" parent="Floors" index="4" instance=ExtResource("12_iqcyh")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.00797, 2.02306, -5)
+
+[node name="FloorMarble_8" parent="Floors" index="5" instance=ExtResource("11_288r4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2, -5)
+
+[node name="FloorMarble_2_13" parent="Floors" index="6" instance=ExtResource("12_iqcyh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15, 2.05242, -20.4249)
+
+[node name="FloorMarble_2_14" parent="Floors" index="7" instance=ExtResource("12_iqcyh")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6, 2.05242, -12.4249)
+
+[node name="FloorMarble_9" parent="Floors" index="8" instance=ExtResource("11_288r4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 2.05242, -20.4249)
+
+[node name="FloorMarble_2_15" parent="Floors" index="9" instance=ExtResource("12_iqcyh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.04697, 2.05242, -20.4249)
+
+[node name="FloorMarble_2_16" parent="Floors" index="10" instance=ExtResource("12_iqcyh")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.95303, 2.05242, -12.4249)
+
+[node name="FloorMarble_10" parent="Floors" index="11" instance=ExtResource("11_288r4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.04697, 2.05242, -20.4249)
+
+[node name="FloorMarble_11" parent="Floors" index="12" instance=ExtResource("11_288r4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 6, -19.5)
+
+[node name="FloorMarble_14" parent="Floors" index="13" instance=ExtResource("11_288r4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 6, -11.5)
+
+[node name="FloorMarble_15" parent="Floors" index="14" instance=ExtResource("11_288r4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 6, -3.5)
+
+[node name="FloorMarble_2_8" parent="Floors/FloorMarble_15" index="65" instance=ExtResource("13_d8gy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="FloorMarble_2_9" parent="Floors/FloorMarble_15" index="66" instance=ExtResource("13_d8gy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.96829, 0, 0)
+
+[node name="FloorMarble_2_10" parent="Floors/FloorMarble_15" index="67" instance=ExtResource("13_d8gy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -8)
+
+[node name="FloorMarble_2_11" parent="Floors/FloorMarble_15" index="68" instance=ExtResource("13_d8gy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.96829, 0, -8)
+
+[node name="FloorMarble_13" parent="Floors" index="15" instance=ExtResource("11_288r4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 6, -19.5)
+
+[node name="FloorMarble_12" parent="Floors" index="16" instance=ExtResource("11_288r4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 6, -19.5)
+
+[node name="Entry" parent="." index="15" instance=ExtResource("14_7gor0")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.68099, 2.20272, 0)
+
+[editable path="PictureFrameSmall"]
+[editable path="PictureFrameMiddle"]

@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=3 uid="uid://drxhamu52sgio"]
+
+[ext_resource type="PackedScene" uid="uid://dvgipim2nnlrk" path="res://scenes/level2D/level2D.tscn" id="1_13r52"]
+[ext_resource type="Script" path="res://scenes/level2D/level2D_with_switch.gd" id="2_r3ykt"]
+[ext_resource type="Texture2D" uid="uid://byb64e57yf37w" path="res://sprites/pictures/level2/Lv2_P1_BG.png" id="3_60kfd"]
+[ext_resource type="PackedScene" uid="uid://ch0xhsgsik2at" path="res://items/pick_up/item_2d.tscn" id="4_yo24e"]
+[ext_resource type="Resource" uid="uid://dm5sdkqwt84ay" path="res://items/key_red.tres" id="5_8kq3s"]
+[ext_resource type="Script" path="res://inventory/slot_data.gd" id="6_gcy7m"]
+[ext_resource type="Texture2D" uid="uid://dua8h731xyhjc" path="res://sprites/effects/twinkle/Twinkle01.PNG" id="7_6c7kl"]
+[ext_resource type="AudioStream" uid="uid://bjth8yn13ubuw" path="res://audio/pickup_key.mp3" id="7_76rc6"]
+[ext_resource type="Texture2D" uid="uid://dgc50suk7f4es" path="res://sprites/effects/twinkle/Twinkle02.PNG" id="8_4xmx7"]
+
+[sub_resource type="Resource" id="Resource_non00"]
+script = ExtResource("6_gcy7m")
+item_data = ExtResource("5_8kq3s")
+quantity = 1
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p853b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_6c7kl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4xmx7")
+}],
+"loop": true,
+"name": &"twinkle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfkfu"]
+size = Vector2(0.207938, 10.5886)
+
+[node name="GetAKey2D" instance=ExtResource("1_13r52")]
+script = ExtResource("2_r3ykt")
+player_scale = 7.0
+
+[node name="Camera2D" type="Camera2D" parent="." index="0"]
+anchor_mode = 0
+
+[node name="Background" type="Sprite2D" parent="." index="1"]
+position = Vector2(765.838, 540.42)
+scale = Vector2(0.435952, 0.435952)
+texture = ExtResource("3_60kfd")
+metadata/_edit_lock_ = true
+
+[node name="Floor" parent="." index="2"]
+position = Vector2(920, 1081)
+
+[node name="PlayerSpawnPosition" parent="." index="3"]
+position = Vector2(1156, 501)
+
+[node name="PlayerEnterPosition" parent="." index="4"]
+position = Vector2(1107, 511)
+
+[node name="Item2D" parent="." index="5" instance=ExtResource("4_yo24e")]
+position = Vector2(537, 573)
+rotation = -0.645772
+slot_data = SubResource("Resource_non00")
+rotates = false
+pickup_sound = ExtResource("7_76rc6")
+
+[node name="Twinkle" type="AnimatedSprite2D" parent="Item2D" index="3"]
+z_index = 1
+position = Vector2(-11, -18)
+rotation = -0.546288
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_p853b")
+animation = &"twinkle"
+autoplay = "twinkle"
+frame = 1
+frame_progress = 0.642489
+
+[node name="Wall" type="StaticBody2D" parent="." index="7"]
+position = Vector2(2364, 790)
+collision_layer = 8
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" index="0"]
+position = Vector2(-782, -34)
+scale = Vector2(1143.75, 50.25)
+shape = SubResource("RectangleShape2D_qfkfu")
+
+[node name="Wall2" type="StaticBody2D" parent="." index="8"]
+position = Vector2(2364, 790)
+collision_layer = 8
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2" index="0"]
+position = Vector2(-2054, -84)
+scale = Vector2(1143.75, 50.25)
+shape = SubResource("RectangleShape2D_qfkfu")

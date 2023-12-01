@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://banu0dj460uk8"]
+
+[ext_resource type="PackedScene" uid="uid://loaeyoohq4cw" path="res://models/tiles/floor.blend" id="1_hkl1s"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ke8kb"]
+size = Vector3(1, 0.1, 1)
+
+[node name="FloorMarble_1" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 31
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+shape = SubResource("BoxShape3D_ke8kb")
+
+[node name="floor" parent="." instance=ExtResource("1_hkl1s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)

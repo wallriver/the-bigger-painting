@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvgipim2nnlrk"]
+
+[ext_resource type="Script" path="res://scenes/level2D/level2D.gd" id="1_jmdrh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o0qak"]
+size = Vector2(1.67847, 3.95025)
+
+[node name="Level" type="Node2D" groups=["Level2D"]]
+script = ExtResource("1_jmdrh")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(574, 621)
+collision_layer = 4
+collision_mask = 31
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+scale = Vector2(1143.75, 50.25)
+shape = SubResource("RectangleShape2D_o0qak")
+
+[node name="PlayerSpawnPosition" type="Marker2D" parent="."]
+unique_name_in_owner = true
+
+[node name="PlayerEnterPosition" type="Marker2D" parent="."]
+unique_name_in_owner = true
+
+[node name="PlayerContainer" type="Node2D" parent="."]
+unique_name_in_owner = true

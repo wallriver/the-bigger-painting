@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhypmaarlha2v"]
+
+[ext_resource type="PackedScene" uid="uid://dvgipim2nnlrk" path="res://scenes/level2D/level2D.tscn" id="1_fsoir"]
+[ext_resource type="Script" path="res://scenes/level2D/level2D_with_switch.gd" id="2_fu40e"]
+[ext_resource type="Texture2D" uid="uid://dghstuyw3xxmj" path="res://sprites/pictures/level3/Lv3_P2_BG.PNG" id="3_ciw8t"]
+[ext_resource type="PackedScene" uid="uid://rdvnqiubq4ni" path="res://scenes/objects2D/picture_switch_zone.tscn" id="4_mpwf7"]
+[ext_resource type="Texture2D" uid="uid://dk0wh5ad4fan3" path="res://sprites/pictures/level3/Lv3_P2_FG.PNG" id="5_trjnn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sdgj5"]
+size = Vector2(0.207938, 19.075)
+
+[node name="LevelThrone" instance=ExtResource("1_fsoir")]
+script = ExtResource("2_fu40e")
+
+[node name="Camera2D" type="Camera2D" parent="." index="0"]
+anchor_mode = 0
+
+[node name="Floor" parent="." index="1"]
+position = Vector2(866, 947)
+
+[node name="PlayerSpawnPosition" parent="." index="2"]
+position = Vector2(425, 477)
+
+[node name="PlayerEnterPosition" parent="." index="3"]
+position = Vector2(557, 610)
+
+[node name="Background" type="Sprite2D" parent="." index="4"]
+position = Vector2(380, 539)
+scale = Vector2(0.306452, 0.306413)
+texture = ExtResource("3_ciw8t")
+metadata/_edit_lock_ = true
+
+[node name="PictureSwitchZone" parent="." index="5" instance=ExtResource("4_mpwf7")]
+position = Vector2(767, 473)
+scale = Vector2(3, 3)
+
+[node name="Wall" type="StaticBody2D" parent="." index="7"]
+position = Vector2(2364, 790)
+collision_layer = 8
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" index="0"]
+position = Vector2(-2277, -307.74)
+scale = Vector2(1143.75, 50.25)
+shape = SubResource("RectangleShape2D_sdgj5")
+
+[node name="Foreground" type="Sprite2D" parent="." index="8"]
+position = Vector2(381, 540.316)
+scale = Vector2(0.306452, 0.306452)
+texture = ExtResource("5_trjnn")
+
+[connection signal="player_entered_switch_zone" from="PictureSwitchZone" to="." method="_on_picture_switch_zone_player_entered"]

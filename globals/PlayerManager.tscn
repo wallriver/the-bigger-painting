@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://fmbnyt4dbyr4"]
+
+[ext_resource type="Script" path="res://globals/player_manager.gd" id="1_k8fep"]
+[ext_resource type="Script" path="res://inventory/inventory_data.gd" id="2_sqot3"]
+
+[sub_resource type="Resource" id="Resource_3gc4a"]
+script = ExtResource("2_sqot3")
+slot_datas = Array[Resource("res://inventory/slot_data.gd")]([null])
+
+[node name="PlayerManager" type="Node"]
+script = ExtResource("1_k8fep")
+inventory_data = SubResource("Resource_3gc4a")

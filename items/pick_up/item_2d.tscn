@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://ch0xhsgsik2at"]
+
+[ext_resource type="Script" path="res://items/pick_up/item_2d.gd" id="1_7qkw0"]
+[ext_resource type="Texture2D" uid="uid://dmik4uxuy4bjq" path="res://sprites/stuff/key_knight.png" id="2_b0ies"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gewf0"]
+size = Vector2(45, 46)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nft4m"]
+radius = 120.0
+
+[node name="Item2D" type="RigidBody2D" groups=["Item"]]
+collision_layer = 16
+collision_mask = 14
+gravity_scale = 0.0
+script = ExtResource("1_7qkw0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_b0ies")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -3)
+shape = SubResource("RectangleShape2D_gewf0")
+
+[node name="PickupArea" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("CircleShape2D_nft4m")
+
+[connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]
+[connection signal="body_exited" from="PickupArea" to="." method="_on_pickup_area_body_exited"]

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgtfy1yhrhieo"]
+
+[ext_resource type="Script" path="res://items/pick_up/item_3d.gd" id="1_bbpcs"]
+[ext_resource type="Texture2D" uid="uid://bgp124aof7mmy" path="res://sprites/items/key_golden.png" id="2_haeyk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e6una"]
+size = Vector3(0.608583, 0.133111, 0.731272)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2dbso"]
+radius = 3.0
+
+[node name="Item3D" type="RigidBody3D" groups=["Item"]]
+collision_layer = 4
+collision_mask = 30
+script = ExtResource("1_bbpcs")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.197118, 0)
+texture = ExtResource("2_haeyk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.000734881, 0)
+shape = SubResource("BoxShape3D_e6una")
+
+[node name="PickupArea" type="Area3D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickupArea"]
+shape = SubResource("SphereShape3D_2dbso")
+
+[connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]
+[connection signal="body_exited" from="PickupArea" to="." method="_on_pickup_area_body_exited"]

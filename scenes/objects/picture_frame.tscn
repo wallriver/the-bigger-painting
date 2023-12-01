@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://pxtp3aejgrl6"]
+
+[ext_resource type="Script" path="res://scenes/objects/frame.gd" id="1_eguuk"]
+[ext_resource type="PackedScene" uid="uid://cew6s6psqfw8s" path="res://models/objects/picture_frames/frame_1.blend" id="2_xx6c5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q140b"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_m232d"]
+size = Vector2(3.5, 2.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h6e8n"]
+size = Vector3(2.95028, 1.94207, 1.8231)
+
+[node name="PictureFrame" type="Node3D" groups=["Interactables"]]
+script = ExtResource("1_eguuk")
+
+[node name="Painting" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0135587, 0)
+material_override = SubResource("StandardMaterial3D_q140b")
+mesh = SubResource("QuadMesh_m232d")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+projection = 1
+size = 2.5
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.788099)
+shape = SubResource("BoxShape3D_h6e8n")
+
+[node name="SpawnPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.609626, 1.00039)
+
+[node name="Frame" parent="." instance=ExtResource("2_xx6c5")]
+transform = Transform3D(0.85, 0, 0, 0, 1, 0, 0, 0, 1, 0.0147011, -1.0135, 0)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

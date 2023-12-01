@@ -1,0 +1,148 @@
+[gd_scene load_steps=16 format=3 uid="uid://ce053lqbnlqce"]
+
+[ext_resource type="PackedScene" uid="uid://32t83y7svysh" path="res://scenes/level/level.tscn" id="1_o8mdc"]
+[ext_resource type="PackedScene" uid="uid://dw3s2kgamixum" path="res://scenes/level/level_throne_scaling.tscn" id="2_207nw"]
+[ext_resource type="PackedScene" uid="uid://drxhamu52sgio" path="res://scenes/level2D/level2D_get_a_key.tscn" id="3_mvbx4"]
+[ext_resource type="PackedScene" uid="uid://pxtp3aejgrl6" path="res://scenes/objects/picture_frame.tscn" id="4_tialo"]
+[ext_resource type="PackedScene" uid="uid://bb7il3v4p34c2" path="res://scenes/objects/exit.tscn" id="5_f4o3y"]
+[ext_resource type="PackedScene" uid="uid://bwq3ki0poe43b" path="res://scenes/objects/entry.tscn" id="6_yeqi2"]
+[ext_resource type="PackedScene" uid="uid://d2pi0l111fawm" path="res://scenes/level2D/level2D_get_a_key_2.tscn" id="7_e7822"]
+[ext_resource type="PackedScene" uid="uid://brx5mh3bb464a" path="res://scenes/house_tiles/walls/wall_bottom_wood_8.tscn" id="8_4n587"]
+[ext_resource type="PackedScene" uid="uid://divbwi0nlpaj0" path="res://scenes/house_tiles/walls/wall_bottom_wood_3.tscn" id="9_gilj6"]
+[ext_resource type="PackedScene" uid="uid://dhxisla26nho" path="res://scenes/house_tiles/floors/floor_marble_8.tscn" id="9_s7oig"]
+[ext_resource type="PackedScene" uid="uid://b5utr0vl1dfpq" path="res://scenes/house_tiles/floors/floor_marble_1_8.tscn" id="10_ieyv2"]
+[ext_resource type="PackedScene" uid="uid://banu0dj460uk8" path="res://scenes/house_tiles/floors/floor_marble_1.tscn" id="11_0scam"]
+[ext_resource type="PackedScene" uid="uid://da3jmcc316sdc" path="res://scenes/house_tiles/floors/floor_marble_2_8.tscn" id="12_01cex"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8fhks"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rfeo0"]
+
+[node name="GetAKey" instance=ExtResource("1_o8mdc")]
+next_level = ExtResource("2_207nw")
+
+[node name="Player" parent="." index="2"]
+transform = Transform3D(0.729565, 0, 0.68391, 0, 1, 0, -0.68391, 0, 0.729565, 4.29316, 3.12333, 2.01992)
+
+[node name="SubViewport" type="SubViewport" parent="." index="5"]
+size = Vector2i(1420, 1080)
+render_target_update_mode = 4
+
+[node name="GetAKey2D" parent="SubViewport" index="0" node_paths=PackedStringArray("next_picture") instance=ExtResource("3_mvbx4")]
+next_picture = NodePath("../../PictureFrame2")
+
+[node name="Exit" parent="." index="6" instance=ExtResource("5_f4o3y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 2.11719, -3.23773)
+key_required = "key_silver"
+
+[node name="SubViewport2" type="SubViewport" parent="." index="7"]
+size = Vector2i(1420, 1080)
+render_target_update_mode = 4
+
+[node name="LevelGetAKey2" parent="SubViewport2" index="0" node_paths=PackedStringArray("next_picture") instance=ExtResource("7_e7822")]
+next_picture = NodePath("../../PictureFrame")
+player_scale = 5.0
+
+[node name="Entry" parent="." index="8" instance=ExtResource("6_yeqi2")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.26045, 2.30876, 1.9024)
+
+[node name="PictureFrame" parent="." index="9" node_paths=PackedStringArray("displayedLevel", "viewport") instance=ExtResource("4_tialo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.4222, 4.51556, 1.9024)
+displayedLevel = NodePath("../SubViewport/GetAKey2D")
+viewport = NodePath("../SubViewport")
+
+[node name="Painting" parent="PictureFrame" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0135589, 0)
+material_override = SubResource("StandardMaterial3D_8fhks")
+
+[node name="PictureFrame2" parent="." index="10" node_paths=PackedStringArray("displayedLevel", "viewport") instance=ExtResource("4_tialo")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15.3199, 4.52324, 0)
+displayedLevel = NodePath("../SubViewport2/LevelGetAKey2")
+viewport = NodePath("../SubViewport2")
+
+[node name="Painting" parent="PictureFrame2" index="0"]
+material_override = SubResource("StandardMaterial3D_rfeo0")
+
+[node name="Walls" type="Node3D" parent="." index="11"]
+
+[node name="Wall1" type="Node3D" parent="Walls" index="0"]
+
+[node name="Wall_BottomPanel_8" parent="Walls/Wall1" index="0" instance=ExtResource("8_4n587")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, -1)
+
+[node name="Wall_BottomPanel_3" parent="Walls/Wall1" index="1" instance=ExtResource("9_gilj6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, -4)
+
+[node name="Wall2" type="Node3D" parent="Walls" index="1"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, 1)
+
+[node name="Wall_BottomPanel_8" parent="Walls/Wall2" index="0" instance=ExtResource("8_4n587")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, -1)
+
+[node name="Wall_BottomPanel_3" parent="Walls/Wall2" index="1" instance=ExtResource("9_gilj6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, -4)
+
+[node name="Wall3" type="Node3D" parent="Walls" index="2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, 2)
+
+[node name="Wall_BottomPanel_8" parent="Walls/Wall3" index="0" instance=ExtResource("8_4n587")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, -1)
+
+[node name="Wall_BottomPanel_3" parent="Walls/Wall3" index="1" instance=ExtResource("9_gilj6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, -4)
+
+[node name="Wall4" type="Node3D" parent="Walls" index="3"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, 3)
+
+[node name="Wall_BottomPanel_8" parent="Walls/Wall4" index="0" instance=ExtResource("8_4n587")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, -1)
+
+[node name="Wall_BottomPanel_3" parent="Walls/Wall4" index="1" instance=ExtResource("9_gilj6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, -4)
+
+[node name="Floor" type="Node3D" parent="." index="12"]
+
+[node name="FloorMarble_8" parent="Floor" index="0" instance=ExtResource("9_s7oig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -2)
+
+[node name="FloorMarble_2_8" parent="Floor" index="1" instance=ExtResource("10_ieyv2")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 2, -2)
+
+[node name="FloorMarble_2_9" parent="Floor" index="2" instance=ExtResource("10_ieyv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, -2)
+
+[node name="FloorMarble_1" parent="Floor" index="3" instance=ExtResource("11_0scam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.966, 2, -3)
+
+[node name="Ceiling" type="Node3D" parent="." index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01103, 3.92033, 0.975334)
+
+[node name="FloorMarble_8" parent="Ceiling" index="0" instance=ExtResource("9_s7oig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -2)
+
+[node name="FloorMarble_2_8" parent="Ceiling" index="1" instance=ExtResource("10_ieyv2")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 2, -2)
+
+[node name="FloorMarble_2_9" parent="Ceiling" index="2" instance=ExtResource("10_ieyv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, -2)
+
+[node name="FloorMarble_1" parent="Ceiling" index="3" instance=ExtResource("11_0scam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.966, 2, -3)
+
+[node name="FloorMarble_2_10" parent="Ceiling" index="4" instance=ExtResource("12_01cex")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, -2)
+
+[node name="FloorMarble_2_11" parent="Ceiling" index="5" instance=ExtResource("12_01cex")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, -9.9566)
+
+[node name="FloorMarble_2_12" parent="Ceiling" index="6" instance=ExtResource("12_01cex")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 2, -3)
+
+[node name="FloorMarble_2" parent="Ceiling" index="7" instance=ExtResource("11_0scam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.987, 2, -4)
+
+[node name="FloorMarble_3" parent="Ceiling" index="8" instance=ExtResource("11_0scam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.987, 2, -5)
+
+[editable path="PictureFrame"]
+[editable path="PictureFrame2"]

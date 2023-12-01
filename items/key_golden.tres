@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://du5bkysunf5ln"]
+
+[ext_resource type="Script" path="res://inventory/item_data.gd" id="1_tsao1"]
+[ext_resource type="Texture2D" uid="uid://bgp124aof7mmy" path="res://sprites/items/key_golden.png" id="2_wkigq"]
+
+[resource]
+script = ExtResource("1_tsao1")
+name = "Golden Key"
+id = "key_golden"
+description = "A golden key. May unlock a golden door"
+stack_size = 1
+texture = ExtResource("2_wkigq")

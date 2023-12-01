@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://8ew34udo5chg"]
+
+[ext_resource type="PackedScene" uid="uid://dvgipim2nnlrk" path="res://scenes/level2D/level2D.tscn" id="1_j3us5"]
+[ext_resource type="Script" path="res://scenes/level2D/menu_scenes/level2D_thanks_for_playing.gd" id="2_e8o7b"]
+[ext_resource type="Texture2D" uid="uid://d1gx78ofe1ejn" path="res://sprites/ui/buttons/BackToMenuHover.PNG" id="3_8knyi"]
+[ext_resource type="Texture2D" uid="uid://qhchh1p5xysv" path="res://sprites/ui/ThanksForPlaying.PNG" id="3_x5086"]
+[ext_resource type="Texture2D" uid="uid://cmqlmd3i58va7" path="res://sprites/ui/buttons/BackToMenu.PNG" id="4_sppcd"]
+
+[node name="LevelThanksForPlaying" instance=ExtResource("1_j3us5")]
+script = ExtResource("2_e8o7b")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" index="0"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.643137, 0.443137, 0.192157, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" index="1"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -500.0
+offset_right = 500.0
+offset_bottom = 832.0
+grow_horizontal = 2
+texture = ExtResource("3_x5086")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" index="2"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -131.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 20
+
+[node name="BackToStartButton" type="TextureButton" parent="CanvasLayer/MarginContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture_normal = ExtResource("3_8knyi")
+texture_hover = ExtResource("4_sppcd")
+
+[node name="Floor" parent="." index="1"]
+position = Vector2(964, 980)
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/BackToStartButton" to="." method="_on_back_to_start_button_pressed"]

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dm5sdkqwt84ay"]
+
+[ext_resource type="Script" path="res://inventory/item_data.gd" id="1_up6nx"]
+[ext_resource type="Texture2D" uid="uid://dmik4uxuy4bjq" path="res://sprites/stuff/key_knight.png" id="2_3oe0g"]
+
+[resource]
+script = ExtResource("1_up6nx")
+name = "Silver Key"
+id = "key_silver"
+description = "A red key. May unlock a red door"
+stack_size = 1
+texture = ExtResource("2_3oe0g")

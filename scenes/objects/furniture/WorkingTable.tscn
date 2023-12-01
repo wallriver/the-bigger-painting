@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cljyp7pjn8f3x"]
+
+[ext_resource type="PackedScene" uid="uid://cx3hhrlqxw5e" path="res://models/objects/furniture/workingTable.blend" id="1_5rwgr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j0bjp"]
+size = Vector3(1.63745, 1.20081, 2.64013)
+
+[node name="WorkingTable" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 27
+
+[node name="workingTable" parent="." instance=ExtResource("1_5rwgr")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.554707, 0)
+shape = SubResource("BoxShape3D_j0bjp")

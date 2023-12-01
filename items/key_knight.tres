@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://l4ipsvw761p4"]
+
+[ext_resource type="Script" path="res://inventory/item_data.gd" id="1_1c2rn"]
+[ext_resource type="Texture2D" uid="uid://dmik4uxuy4bjq" path="res://sprites/stuff/key_knight.png" id="2_yjkwb"]
+
+[resource]
+script = ExtResource("1_1c2rn")
+name = "Knight Key"
+id = "key_knight"
+description = ""
+stack_size = 1
+texture = ExtResource("2_yjkwb")

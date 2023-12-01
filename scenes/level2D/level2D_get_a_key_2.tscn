@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://d2pi0l111fawm"]
+
+[ext_resource type="PackedScene" uid="uid://dvgipim2nnlrk" path="res://scenes/level2D/level2D.tscn" id="1_ataao"]
+[ext_resource type="Script" path="res://scenes/level2D/level2D_with_switch.gd" id="2_dw3k4"]
+[ext_resource type="Texture2D" uid="uid://y06rmgsrce5b" path="res://sprites/pictures/level1/Lv1_P1_BG.png" id="3_rhrn6"]
+[ext_resource type="PackedScene" uid="uid://rdvnqiubq4ni" path="res://scenes/objects2D/picture_switch_zone.tscn" id="4_qp5ed"]
+[ext_resource type="Texture2D" uid="uid://c5sqc2kf4djwj" path="res://sprites/pictures/level1/Lv1_P1_F.png" id="5_dw311"]
+[ext_resource type="PackedScene" uid="uid://ch0xhsgsik2at" path="res://items/pick_up/item_2d.tscn" id="6_7ncaf"]
+[ext_resource type="Resource" uid="uid://dm5sdkqwt84ay" path="res://items/key_red.tres" id="7_8r1m5"]
+[ext_resource type="Script" path="res://inventory/slot_data.gd" id="8_x74py"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jhau4"]
+size = Vector2(0.308559, 9.51399)
+
+[sub_resource type="Resource" id="Resource_x0yse"]
+script = ExtResource("8_x74py")
+item_data = ExtResource("7_8r1m5")
+quantity = 1
+
+[node name="LevelGetAKey2" instance=ExtResource("1_ataao")]
+script = ExtResource("2_dw3k4")
+
+[node name="Camera2D" type="Camera2D" parent="." index="0"]
+anchor_mode = 0
+
+[node name="Background" type="Sprite2D" parent="." index="1"]
+position = Vector2(765.838, 540.42)
+scale = Vector2(0.435952, 0.435952)
+texture = ExtResource("3_rhrn6")
+
+[node name="Wall" type="StaticBody2D" parent="." index="2"]
+position = Vector2(573, 557)
+collision_layer = 8
+collision_mask = 15
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" index="0"]
+position = Vector2(-395.457, 67.039)
+scale = Vector2(1143.75, 50.25)
+shape = SubResource("RectangleShape2D_jhau4")
+
+[node name="Floor" parent="." index="3"]
+collision_layer = 8
+collision_mask = 15
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" parent="Floor" index="0"]
+position = Vector2(189.25, 352.25)
+
+[node name="PlayerSpawnPosition" parent="." index="4"]
+position = Vector2(605, 518)
+
+[node name="PictureSwitchZone" parent="." index="5" instance=ExtResource("4_qp5ed")]
+position = Vector2(1442, 382)
+scale = Vector2(3, 3)
+
+[node name="PlayerEnterPosition" parent="." index="6"]
+position = Vector2(645, 545)
+
+[node name="Foreground" type="Sprite2D" parent="." index="8"]
+position = Vector2(759, 544)
+scale = Vector2(0.432339, 0.432339)
+texture = ExtResource("5_dw311")
+
+[node name="Item2D" parent="." index="9" instance=ExtResource("6_7ncaf")]
+position = Vector2(863, 543)
+slot_data = SubResource("Resource_x0yse")
+
+[connection signal="player_entered_switch_zone" from="PictureSwitchZone" to="." method="_on_picture_switch_zone_player_entered"]

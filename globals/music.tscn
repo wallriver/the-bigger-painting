@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2rvkesrgjfy2"]
+
+[ext_resource type="Script" path="res://globals/music.gd" id="1_mi3kn"]
+[ext_resource type="AudioStream" uid="uid://tq0hqwg0l06k" path="res://audio/main_theme.mp3" id="2_i5u3w"]
+
+[node name="Music" type="Node"]
+script = ExtResource("1_mi3kn")
+
+[node name="MainThemePlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_i5u3w")
+volume_db = -20.0
+autoplay = true

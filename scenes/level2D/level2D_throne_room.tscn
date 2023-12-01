@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://ybkmlxii77if"]
+
+[ext_resource type="PackedScene" uid="uid://dvgipim2nnlrk" path="res://scenes/level2D/level2D.tscn" id="1_e8aa8"]
+[ext_resource type="Script" path="res://scenes/level2D/level2D_with_switch.gd" id="2_g5mwx"]
+[ext_resource type="PackedScene" uid="uid://rdvnqiubq4ni" path="res://scenes/objects2D/picture_switch_zone.tscn" id="4_7piuf"]
+[ext_resource type="PackedScene" uid="uid://ch0xhsgsik2at" path="res://items/pick_up/item_2d.tscn" id="5_cw7x7"]
+[ext_resource type="Script" path="res://inventory/slot_data.gd" id="7_66pe7"]
+[ext_resource type="Resource" uid="uid://2wgps1e2gv0v" path="res://items/key_temple.tres" id="7_jy8le"]
+[ext_resource type="Texture2D" uid="uid://cbjj71mj3hgbd" path="res://sprites/pictures/level3/Lv3_P1.PNG" id="8_65747"]
+
+[sub_resource type="Resource" id="Resource_gg0g3"]
+script = ExtResource("7_66pe7")
+item_data = ExtResource("7_jy8le")
+quantity = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3uiex"]
+size = Vector2(0.0888817, 8.12251)
+
+[node name="LevelThroneRoom" instance=ExtResource("1_e8aa8")]
+script = ExtResource("2_g5mwx")
+
+[node name="Camera2D" type="Camera2D" parent="." index="0"]
+anchor_mode = 0
+
+[node name="Background" type="Sprite2D" parent="." index="1"]
+position = Vector2(763.546, 539.5)
+scale = Vector2(0.435887, 0.435887)
+texture = ExtResource("8_65747")
+
+[node name="Floor" parent="." index="2"]
+position = Vector2(850, 999)
+
+[node name="PlayerSpawnPosition" parent="." index="3"]
+position = Vector2(686, 758)
+
+[node name="PlayerEnterPosition" parent="." index="4"]
+position = Vector2(187, 733)
+
+[node name="PictureSwitchZone" parent="." index="5" instance=ExtResource("4_7piuf")]
+position = Vector2(1, 890)
+rotation = 3.14159
+
+[node name="Item2D" parent="." index="6" instance=ExtResource("5_cw7x7")]
+position = Vector2(709, 437)
+slot_data = SubResource("Resource_gg0g3")
+rotates = false
+
+[node name="Wall" type="StaticBody2D" parent="." index="8"]
+position = Vector2(1404, 698)
+collision_layer = 8
+collision_mask = 15
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" index="0"]
+scale = Vector2(1143.75, 50.25)
+shape = SubResource("RectangleShape2D_3uiex")
+
+[connection signal="player_entered_switch_zone" from="PictureSwitchZone" to="." method="_on_picture_switch_zone_player_entered"]

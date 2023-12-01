@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://da3jmcc316sdc"]
+
+[ext_resource type="PackedScene" uid="uid://loaeyoohq4cw" path="res://models/tiles/floor.blend" id="1_3h53x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iwrfr"]
+size = Vector3(2, 0.1, 8)
+
+[node name="FloorMarble_2_8" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 31
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 4)
+shape = SubResource("BoxShape3D_iwrfr")
+
+[node name="floor" parent="." instance=ExtResource("1_3h53x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+
+[node name="floor2" parent="." instance=ExtResource("1_3h53x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0.5)
+
+[node name="floor4" parent="." instance=ExtResource("1_3h53x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 1.5)
+
+[node name="floor5" parent="." instance=ExtResource("1_3h53x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 1.5)
+
+[node name="floor7" parent="." instance=ExtResource("1_3h53x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 2.5)
+
+[node name="floor8" parent="." instance=ExtResource("1_3h53x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 2.5)
+
+[node name="floor10" parent="." instance=ExtResource("1_3h53x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 3.5)
+
+[node name="floor11" parent="." instance=ExtResource("1_3h53x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 3.5)
+
+[node name="floor13" parent="." instance=ExtResource("1_3h53x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 4.5)
+
+[node name="floor14" parent="." instance=ExtResource("1_3h53x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 4.5)
+
+[node name="floor16" parent="." instance=ExtResource("1_3h53x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 5.5)
+
+[node name="floor17" parent="." instance=ExtResource("1_3h53x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 5.5)
+
+[node name="floor19" parent="." instance=ExtResource("1_3h53x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 6.5)
+
+[node name="floor20" parent="." instance=ExtResource("1_3h53x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 6.5)
+
+[node name="floor22" parent="." instance=ExtResource("1_3h53x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 7.5)
+
+[node name="floor23" parent="." instance=ExtResource("1_3h53x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 7.5)

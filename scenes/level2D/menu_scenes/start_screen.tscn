@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://7ww27grh3qak"]
+
+[ext_resource type="Script" path="res://scenes/level2D/menu_scenes/start_screen.gd" id="1_8ynfc"]
+[ext_resource type="PackedScene" uid="uid://5e61tb3k8ms6" path="res://scenes/level/level_introduction.tscn" id="2_38f2b"]
+[ext_resource type="Texture2D" uid="uid://dunnf15tor2bu" path="res://sprites/ui/Title.PNG" id="3_lfao3"]
+[ext_resource type="Texture2D" uid="uid://c6qooc5dqapkx" path="res://sprites/ui/buttons/Start.PNG" id="4_3tl80"]
+[ext_resource type="Texture2D" uid="uid://d108751lgvtwf" path="res://sprites/ui/buttons/StartHover.PNG" id="5_p3jcg"]
+
+[node name="StartScreen" type="Node2D"]
+script = ExtResource("1_8ynfc")
+first_level = ExtResource("2_38f2b")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.643137, 0.443137, 0.192157, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -697.0
+offset_top = -511.0
+offset_right = 2811.0
+offset_bottom = 1969.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_lfao3")
+
+[node name="StartGameButton" type="TextureButton" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -197.0
+offset_top = -182.0
+offset_right = 203.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("5_p3jcg")
+texture_hover = ExtResource("4_3tl80")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -483.5
+offset_top = -26.0
+offset_right = 483.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "(c) 2023 Georg Kaes (Godot, Code, 3D, Sound Effects), Jonas Zeillinger (2D graphics, UI, Soundtrack), Agnes Müller (Soundtrack)"
+
+[connection signal="pressed" from="CanvasLayer/StartGameButton" to="." method="_on_start_game_button_pressed"]

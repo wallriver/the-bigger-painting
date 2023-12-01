@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://32t83y7svysh"]
+
+[ext_resource type="Script" path="res://scenes/level/level.gd" id="1_fuqfl"]
+[ext_resource type="PackedScene" uid="uid://ctiqao37r366j" path="res://scenes/player/player.tscn" id="1_mhnyq"]
+[ext_resource type="Script" path="res://inventory/inventory_interface.gd" id="3_y6a6y"]
+[ext_resource type="PackedScene" uid="uid://capl4wlco3cto" path="res://inventory/Inventory.tscn" id="4_0kg62"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tomt0"]
+sky_top_color = Color(0.188235, 0.45098, 0.756863, 1)
+sky_horizon_color = Color(0.572549, 0.67451, 0.721569, 1)
+
+[sub_resource type="Sky" id="Sky_ev4mw"]
+sky_material = SubResource("ProceduralSkyMaterial_tomt0")
+
+[sub_resource type="Environment" id="Environment_nhx5x"]
+background_mode = 2
+sky = SubResource("Sky_ev4mw")
+ambient_light_color = Color(0.329412, 0.423529, 0.52549, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kryva"]
+size = Vector2(10, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5tclf"]
+size = Vector3(10, 0.1, 10)
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_fuqfl")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_nhx5x")
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_kryva")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("BoxShape3D_5tclf")
+
+[node name="Player" parent="." instance=ExtResource("1_mhnyq")]
+unique_name_in_owner = true
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(0.557876, -0.408838, 0.722237, 0, 0.870244, 0.492621, -0.829925, -0.274821, 0.485488, 0, 3.9348, 0)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(-0.424538, 0.614244, -0.665186, 0.330458, 0.789116, 0.517777, 0.84295, 0, -0.537991, 0, 3.77054, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ToastPanel" type="Panel" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -199.5
+offset_top = -64.0
+offset_right = 199.5
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ToastLabel" type="Label" parent="CanvasLayer/ToastPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = -13.0
+offset_right = 53.5
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press E to use"
+
+[node name="InventoryInterface" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_y6a6y")
+
+[node name="PlayerInventory" parent="CanvasLayer/InventoryInterface" instance=ExtResource("4_0kg62")]
+unique_name_in_owner = true
+layout_mode = 0
